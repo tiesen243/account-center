@@ -1,8 +1,8 @@
 'use client'
 import { useSession } from 'next-auth/react'
+import Image from 'next/image'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card'
 import { Separator } from '../ui/separator'
-import Image from 'next/image'
 
 const Infomation: React.FC = () => {
   const { user } = useSession().data ?? {}
@@ -16,7 +16,7 @@ const Infomation: React.FC = () => {
       </CardHeader>
       <Separator />
 
-      <CardContent className="grid grid-cols-3">
+      <CardContent className="grid h-full grid-cols-3">
         <article className="typography col-span-2">
           <p>
             <b>User Name:</b> {user.userName} <br />
@@ -31,9 +31,9 @@ const Infomation: React.FC = () => {
         <Image
           src={user.avatar}
           alt="avatar"
-          width={400}
-          height={400}
-          className="aspect-square place-items-center"
+          width={500}
+          height={500}
+          className="aspect-square w-full place-self-center rounded object-cover"
         />
       </CardContent>
     </Card>

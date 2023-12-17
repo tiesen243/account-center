@@ -1,0 +1,19 @@
+import IUser from '@/types/user'
+import { TableCell, TableRow } from '../ui/table'
+import ChangeRole from './changeRole'
+import DeleteBtn from './deleteBtn'
+
+const UserList: React.FC<{ user: IUser }> = ({ user }) => (
+  <TableRow>
+    <TableCell>{user.userName}</TableCell>
+    <TableCell>{user.email}</TableCell>
+    <TableCell>{user.role}</TableCell>
+    <TableCell className="flex items-center gap-2">
+      <ChangeRole user={user} />
+
+      <DeleteBtn id={user._id} />
+    </TableCell>
+  </TableRow>
+)
+
+export default UserList

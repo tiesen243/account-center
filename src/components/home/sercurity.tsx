@@ -45,8 +45,8 @@ const Sercurity: React.FC = () => (
         </Button>
       </section>
 
-      <section className="flex items-center gap-2">
-        <div className="h-fit w-fit rounded-full border border-primary p-2">
+      <section className="flex items-center gap-2 text-destructive">
+        <div className="h-fit w-fit rounded-full border border-destructive p-2">
           <TrashIcon size={24} />
         </div>
 
