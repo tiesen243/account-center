@@ -4,8 +4,9 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://account.tiesen.id.vn'),
   title: 'TN | Account Center',
   description: 'Account Center',
+  themeColor: '#09090b',
   openGraph: {
-    type: 'profile',
+    type: 'website',
     locale: 'vi_VN',
     url: 'https://account.tiesen.id.vn',
     title: 'TN | Account Center',

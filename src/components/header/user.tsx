@@ -36,7 +36,7 @@ const User: React.FC = () => {
           <Tooltip>
             <TooltipTrigger asChild>
               <Avatar className="ring-2 transition-all ease-linear hover:ring-primary">
-                <AvatarImage src={user.avatar} />
+                <AvatarImage src={user.avatar} alt={user.userName} />
                 <AvatarFallback>{user.userName}</AvatarFallback>
               </Avatar>
             </TooltipTrigger>

@@ -21,7 +21,7 @@ const ThemeBtn: React.FC = () => {
     )
 
   return (
-    <Button variant="outline" size="icon" onClick={handleClick}>
+    <Button variant="outline" size="icon" aria-label="theme-btn" onClick={handleClick}>
       {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
     </Button>
   )
