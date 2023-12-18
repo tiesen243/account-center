@@ -1,24 +1,27 @@
+import type { Metadata, NextPage } from 'next'
+
+export const metadata: Metadata = {
+  title: 'TN | Production',
+  description: 'List of all my productions',
+  openGraph: {
+    title: 'TN | Production',
+    description: 'List of all my productions',
+    tags: ['production'],
+  },
+  twitter: {
+    title: 'TN | Production',
+    description: 'List of all my productions',
+    card: 'summary_large_image',
+  },
+}
+
 import { ProductCard, ProductCardProps } from '@/components/productCard'
+import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
-import { NextPage } from 'next'
 
 const Page: NextPage = () => (
   <>
-    <h1 className="mb-4 scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
-      All my productions:
-    </h1>
-
-    <ul className="grid grid-cols-2 gap-4 md:grid-cols-3">
-      {products.map((product) => (
-        <li key={product.title}>
-          <ProductCard {...product} />
-        </li>
-      ))}
-    </ul>
-
-    <Separator className="my-4" />
-
-    <article className="typography">
+    <article className="typography prose-a:no-underline">
       <p>
         Hi, I&apos;m{' '}
         <a href="https://tiesen.id.vn" target="_blank" rel="noopener noreferrer">
@@ -29,7 +32,27 @@ const Page: NextPage = () => (
       <p>
         This is a list of all my productions. I have been working on these projects for a long time.
       </p>
+
+      <Button asChild>
+        <a
+          href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Click here
+        </a>
+      </Button>
     </article>
+
+    <Separator className="my-4" />
+
+    <ul className="grid grid-cols-2 gap-4 md:grid-cols-3">
+      {products.map((product) => (
+        <li key={product.title}>
+          <ProductCard {...product} />
+        </li>
+      ))}
+    </ul>
   </>
 )
 

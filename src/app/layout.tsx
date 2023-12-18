@@ -43,7 +43,7 @@ const RootLayout: NextPage<React.PropsWithChildren> = ({ children }) => (
   <html lang="en" suppressHydrationWarning>
     <body
       className={cn(
-        'min-h-screen overflow-x-hidden bg-background font-sans antialiased',
+        'min-h-screen select-none overflow-x-hidden bg-background font-sans antialiased',
         GeistSans.variable
       )}
     >

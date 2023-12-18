@@ -1,9 +1,25 @@
+import type { Metadata, NextPage } from 'next'
+
+export const metadata: Metadata = {
+  title: 'TN | Admin Center',
+  description: 'List of all users',
+  openGraph: {
+    title: 'TN | Admin Center',
+    description: 'List of all users',
+    tags: ['user'],
+  },
+  twitter: {
+    title: 'TN | Admin Center',
+    description: 'List of all users',
+    card: 'summary_large_image',
+  },
+}
+
 import { Table, TableBody, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import UserList from '@/components/userList'
 import { GetToken } from '@/lib/getToken'
 
 import IUser from '@/types/user'
-import { NextPage } from 'next'
 
 const Head = ['User Name', 'Email', 'Role', 'Actions']
 
