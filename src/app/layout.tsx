@@ -32,6 +32,7 @@ export const metadata: Metadata = {
   },
 }
 
+import { Toaster } from '@/components/ui/toaster'
 import { cn } from '@/lib/utils'
 import AuthProvider from '@/providers/auth.provider'
 import ThemeProvider from '@/providers/theme.provider'
@@ -47,7 +48,10 @@ const RootLayout: NextPage<React.PropsWithChildren> = ({ children }) => (
       )}
     >
       <AuthProvider>
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          {children}
+          <Toaster />
+        </ThemeProvider>
       </AuthProvider>
     </body>
   </html>

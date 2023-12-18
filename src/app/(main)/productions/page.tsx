@@ -1,4 +1,5 @@
 import { ProductCard, ProductCardProps } from '@/components/productCard'
+import { Separator } from '@/components/ui/separator'
 import { NextPage } from 'next'
 
 const Page: NextPage = () => (
@@ -14,6 +15,21 @@ const Page: NextPage = () => (
         </li>
       ))}
     </ul>
+
+    <Separator className="my-4" />
+
+    <article className="typography">
+      <p>
+        Hi, I&apos;m{' '}
+        <a href="https://tiesen.id.vn" target="_blank" rel="noopener noreferrer">
+          Tiesen
+        </a>
+        .
+      </p>
+      <p>
+        This is a list of all my productions. I have been working on these projects for a long time.
+      </p>
+    </article>
   </>
 )
 

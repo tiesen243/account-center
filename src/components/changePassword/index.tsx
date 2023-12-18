@@ -21,8 +21,8 @@ const ChangeForm: React.FC = () => {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Change Infomation</CardTitle>
-        <CardDescription>Change your account infomation.</CardDescription>
+        <CardTitle>Change Password</CardTitle>
+        <CardDescription>After changing your password, you will be logged out.</CardDescription>
       </CardHeader>
 
       <Form {...form}>

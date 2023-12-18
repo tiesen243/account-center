@@ -26,7 +26,13 @@ const ChangeForm: React.FC = () => {
     <Card>
       <CardHeader>
         <CardTitle>Change Infomation</CardTitle>
-        <CardDescription>Change your account infomation.</CardDescription>
+        <CardDescription className="typography">
+          <p>You can change your username and avatar here.</p>
+          <blockquote>
+            Avatar must be a square image, file type must be jpg, png, jpeg and the size must be
+            less than 5MB.
+          </blockquote>
+        </CardDescription>
       </CardHeader>
 
       <Form {...form}>

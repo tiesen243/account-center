@@ -1,11 +1,11 @@
 import { Card } from '@/components/ui/card'
-import { Toaster } from '@/components/ui/toaster'
 import CheckProvider from '@/providers/check.provider'
 
 const AuthLayout: React.FC<React.PropsWithChildren> = ({ children }) => (
   <CheckProvider>
-    <Card className="container max-w-screen-md">{children}</Card>
-    <Toaster />
+    <main className="flex h-screen w-screen items-center justify-center">
+      <Card className="container max-w-screen-md">{children}</Card>
+    </main>
   </CheckProvider>
 )
 
