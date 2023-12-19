@@ -1,3 +1,4 @@
+import { Fields } from '@/components/fields'
 import { toast } from '@/components/ui/use-toast'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { signIn } from 'next-auth/react'
@@ -17,7 +18,9 @@ export const defaultValues: ILogin = {
 
 export const resolver = zodResolver(loginSchema)
 
-export const onSubmit = async (data: ILogin) => {
+export const LoginFields = Fields<ILogin>
+
+export const submit = async (data: ILogin) => {
   try {
     const res = await signIn('credentials', { ...data, redirect: false })
     if (res?.error) throw new Error(res.error)

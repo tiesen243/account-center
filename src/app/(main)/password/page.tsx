@@ -1,13 +1,7 @@
-'use client'
-
 import type { NextPage } from 'next'
-import dynamic from 'next/dynamic'
 
-const BackBtn = dynamic(() => import('@/components/backBtn'), { ssr: false })
-const ChangePassword = dynamic(() => import('@/components/changePassword'), {
-  ssr: false,
-  loading: () => <div>Loading...</div>,
-})
+import BackBtn from '@/components/backBtn'
+import ChangePassword from '@/components/changePassword'
 
 const Page: NextPage = () => (
   <>

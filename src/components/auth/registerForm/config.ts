@@ -1,3 +1,4 @@
+import { Fields } from '@/components/fields'
 import { toast } from '@/components/ui/use-toast'
 import axios from '@/lib/axios'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -25,6 +26,8 @@ export const defaultValues: IRegister = {
 }
 
 export const resolver = zodResolver(registerSchema)
+
+export const RegisterFields = Fields<IRegister>
 
 export const onSubmit = async (data: IRegister, push: (href: string) => void) => {
   try {

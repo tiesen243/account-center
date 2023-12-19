@@ -1,6 +1,9 @@
+'use client'
+
 import axios from 'axios'
-import { toast } from '../ui/use-toast'
+import { Trash2Icon } from 'lucide-react'
 import { signOut, useSession } from 'next-auth/react'
+
 import {
   AlertDialog,
   AlertDialogAction,
@@ -11,9 +14,9 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from '../ui/alert-dialog'
-import { ChevronRightIcon } from 'lucide-react'
-import { Button } from '../ui/button'
+} from '@/components/ui/alert-dialog'
+import { Button } from '@/components/ui/button'
+import { toast } from '@/components/ui/use-toast'
 import { deleteImage } from '@/lib/firebase'
 
 const DeleteBtn = () => {
@@ -23,25 +26,19 @@ const DeleteBtn = () => {
   const handleDelete = async () => {
     try {
       await axios.delete('/api/user')
-      toast({
-        title: 'Account deleted',
-        description: 'Your account has been deleted',
-      })
+      toast({ title: 'Account deleted', description: 'Your account has been deleted' })
       await deleteImage(user._id, 'avatar')
       await signOut({ callbackUrl: '/login' })
     } catch (e: any) {
-      toast({
-        title: 'Delete account failed',
-        description: e.response.data.message,
-      })
+      toast({ title: 'Delete account failed', description: e.response.data.message })
     }
   }
 
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
-        <Button variant="outline" size="icon">
-          <ChevronRightIcon size={24} />
+        <Button variant="outline" size="icon" className="text-destructive">
+          <Trash2Icon size={24} />
         </Button>
       </AlertDialogTrigger>
 

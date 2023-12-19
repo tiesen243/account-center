@@ -5,18 +5,18 @@ import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
 
 const CheckProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
-  const { data } = useSession()
+  const { status } = useSession()
   const { push } = useRouter()
 
   useEffect(() => {
-    if (data?.user) {
+    if (status === 'authenticated') {
       push('/')
       toast({
         title: 'You are already logged in',
         description: 'You will be redirected to the home page.',
       })
     }
-  }, [data, push])
+  }, [status]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return <>{children}</>
 }

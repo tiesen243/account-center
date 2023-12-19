@@ -1,10 +1,9 @@
-import type { Metadata, NextPage } from 'next'
+import type { Metadata, NextPage, Viewport } from 'next'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://account.tiesen.id.vn'),
   title: 'TN | Account Center',
   description: 'Account Center',
-  themeColor: '#09090b',
   openGraph: {
     type: 'website',
     locale: 'vi_VN',
@@ -31,6 +30,9 @@ export const metadata: Metadata = {
   other: {
     canonical: 'https://account.tiesen.id.vn',
   },
+}
+export const viewport: Viewport = {
+  themeColor: '#09090b',
 }
 
 import { Toaster } from '@/components/ui/toaster'

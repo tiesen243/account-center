@@ -1,12 +1,8 @@
-'use client'
-
 import type { NextPage } from 'next'
-import dynamic from 'next/dynamic'
 
+import Infomation from '@/components/home/information'
+import Sercurity from '@/components/home/sercurity'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-
-const Infomation = dynamic(() => import('@/components/home/infomation'), { ssr: false })
-const Sercurity = dynamic(() => import('@/components/home/sercurity'), { ssr: false })
 
 const Page: NextPage = () => (
   <>

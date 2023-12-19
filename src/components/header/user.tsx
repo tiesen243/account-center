@@ -3,9 +3,6 @@
 import { signOut, useSession } from 'next-auth/react'
 import Link from 'next/link'
 
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { Button } from '@/components/ui/button'
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 import {
   AlertDialog,
   AlertDialogAction,
@@ -16,34 +13,31 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from '../ui/alert-dialog'
+} from '@/components/ui/alert-dialog'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { Button } from '@/components/ui/button'
+import { Skeleton } from '@/components/ui/skeleton'
 
 const User: React.FC = () => {
-  const { user } = useSession().data ?? {}
-  const logout = () => signOut({ callbackUrl: '/' })
+  const { data, status } = useSession()
 
-  if (!user)
+  if (status == 'unauthenticated')
     return (
       <Button asChild>
         <Link href="/login">Login</Link>
       </Button>
     )
 
+  if (status == 'loading')
+    return <Skeleton className="h-10 w-10 rounded-full ring-primary transition-all hover:ring-2" />
+
   return (
     <AlertDialog>
       <AlertDialogTrigger>
-        <TooltipProvider>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Avatar className="ring-2 transition-all ease-linear hover:ring-primary">
-                <AvatarImage src={user.avatar} alt={user.userName} />
-                <AvatarFallback>{user.userName}</AvatarFallback>
-              </Avatar>
-            </TooltipTrigger>
-
-            <TooltipContent className="mt-2">{user.userName}</TooltipContent>
-          </Tooltip>
-        </TooltipProvider>
+        <Avatar className="ring-primary transition-all hover:ring-2">
+          <AvatarImage src={data?.user.avatar} alt={data?.user.userName} />
+          <AvatarFallback>{data?.user.userName}</AvatarFallback>
+        </Avatar>
       </AlertDialogTrigger>
 
       <AlertDialogContent>
@@ -56,7 +50,9 @@ const User: React.FC = () => {
 
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction onClick={logout}>Logout</AlertDialogAction>
+          <AlertDialogAction onClick={() => signOut({ callbackUrl: '/' })}>
+            Logout
+          </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

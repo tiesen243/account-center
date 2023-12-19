@@ -1,14 +1,16 @@
 'use client'
 
+import { CardHeader, CardTitle } from '@/components/ui/card'
 import type { NextPage } from 'next'
 import dynamic from 'next/dynamic'
 
 const RegisterForm = dynamic(() => import('@/components/auth/registerForm'), { ssr: false })
-const FormHeader = dynamic(() => import('@/components/formHeader'), { ssr: false })
 
 const Page: NextPage = () => (
   <>
-    <FormHeader title="Register" />
+    <CardHeader>
+      <CardTitle>Register</CardTitle>
+    </CardHeader>
     <RegisterForm />
   </>
 )

@@ -15,44 +15,59 @@ export const metadata: Metadata = {
   },
 }
 
-import { Table, TableBody, TableHead, TableHeader, TableRow } from '@/components/ui/table'
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableFooter,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table'
 import UserList from '@/components/userList'
 import { GetToken } from '@/lib/getToken'
+import type IUser from '@/types/user'
 
-import IUser from '@/types/user'
-
-const Head = ['User Name', 'Email', 'Role', 'Actions']
+const heads: string[] = ['User Name', 'Email', 'Role', 'Created At', 'Updated At', 'Actions']
 
 const Page: NextPage = async () => {
   try {
     const token = await GetToken()
-
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/user/all`, {
       headers: { Authorization: `Bearer ${token}` },
-      next: {
-        tags: ['user'],
-      },
+      next: { tags: ['user'] },
     })
-
     const data = (await res.json()) as { data: IUser[] }
     if (!data) throw new Error('No data found')
 
     return (
-      <Table>
-        <TableHeader>
-          <TableRow>
-            {Head.map((item, index) => (
-              <TableHead key={index}>{item}</TableHead>
-            ))}
-          </TableRow>
-        </TableHeader>
+      <>
+        <h1 className="mb-4 text-center text-3xl font-semibold">User List</h1>
+        <Table>
+          <TableHeader className="sticky inset-0 bg-card">
+            <TableRow>
+              {heads.map((item) => (
+                <TableHead key={item} className="whitespace-nowrap">
+                  {item}
+                </TableHead>
+              ))}
+            </TableRow>
+          </TableHeader>
 
-        <TableBody>
-          {data.data.map((user) => (
-            <UserList user={user} key={user._id} />
-          ))}
-        </TableBody>
-      </Table>
+          <TableBody>
+            {data.data.map((user) => (
+              <UserList user={user} key={user._id} />
+            ))}
+          </TableBody>
+
+          <TableFooter className="sticky bottom-0 left-0">
+            <TableRow>
+              <TableCell colSpan={5}>Total users</TableCell>
+              <TableCell className="text-right">{data.data.length}</TableCell>
+            </TableRow>
+          </TableFooter>
+        </Table>
+      </>
     )
   } catch (e: any) {
     return (

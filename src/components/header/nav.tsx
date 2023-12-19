@@ -8,7 +8,7 @@ const Nav: React.FC = () => {
   const { role } = useSession().data?.user || {}
 
   return (
-    <ul className="hidden items-center gap-2 md:flex">
+    <ul className="flex items-center gap-2">
       <Link href="/productions" passHref legacyBehavior>
         <li className={buttonVariants({ variant: 'link', className: 'cursor-pointer' })}>
           Productions

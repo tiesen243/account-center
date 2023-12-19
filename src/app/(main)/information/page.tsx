@@ -1,18 +1,12 @@
-'use client'
-
 import type { NextPage } from 'next'
-import dynamic from 'next/dynamic'
 
-const BackBtn = dynamic(() => import('@/components/backBtn'), { ssr: false })
-const ChangeForm = dynamic(() => import('@/components/changeForm'), {
-  ssr: false,
-  loading: () => <div>Loading.... </div>,
-})
+import BackBtn from '@/components/backBtn'
+import ChangeInfo from '@/components/changeInfo'
 
 const Page: NextPage = () => (
   <>
     <BackBtn />
-    <ChangeForm />
+    <ChangeInfo />
   </>
 )
 

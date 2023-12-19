@@ -3,6 +3,7 @@ import axios from 'axios'
 import * as z from 'zod'
 import { toast } from '../ui/use-toast'
 import { signOut } from 'next-auth/react'
+import { Fields } from '../fields'
 
 export const passwordSchema = z
   .object({
@@ -25,7 +26,9 @@ export const defaultValues: IPass = {
 
 export const resolver = zodResolver(passwordSchema)
 
-export const onSubmit = async (fData: IPass) => {
+export const PassFields = Fields<IPass>
+
+export const submit = async (fData: IPass) => {
   try {
     await axios.patch('/api/user/password', fData)
     toast({

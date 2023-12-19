@@ -13,12 +13,7 @@ const ThemeBtn: React.FC = () => {
 
   const [mounted, setMounted] = useState<boolean>(false)
   useEffect(() => setMounted(true), [])
-  if (!mounted)
-    return (
-      <Button variant="outline" size="icon">
-        <Skeleton className="h-6 w-6" />
-      </Button>
-    )
+  if (!mounted) return <Skeleton className="h-10 w-10" />
 
   return (
     <Button variant="outline" size="icon" aria-label="theme-btn" onClick={handleClick}>

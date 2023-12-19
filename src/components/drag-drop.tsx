@@ -7,7 +7,7 @@ import { Input } from '@/components/ui/input'
 import { toast } from '@/components/ui/use-toast'
 import { cn } from '@/lib/utils'
 import Image from 'next/image'
-import IFields from '@/types/fields'
+import { IFields } from '@/types/fields'
 
 interface Props extends IFields {
   previewImg?: string
@@ -59,7 +59,13 @@ export const DragAndDrop = forwardRef<DropzoneRef, Props>(({ previewImg, ...fiel
           </p>
 
           {preview && (
-            <Image src={preview} alt="preview" width={100} height={200} className="rounded" />
+            <Image
+              src={preview}
+              alt="preview"
+              width={200}
+              height={200}
+              className="aspect-square rounded"
+            />
           )}
         </section>
       )}
